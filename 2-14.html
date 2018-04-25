@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <style>
+        svg {
+            height: 500px;
+            width: 500px;
+            border: 1px solid gray;
+        }
+
+        text {
+            font-size: 10px;
+        }
+
+        g>text.active {
+            font-size: 30px;
+        }
+
+        circle {
+            fill: pink;
+            stroke: black;
+            stroke-width: 1px;
+        }
+
+        circle.active {
+            fill: red;
+        }
+
+        circle.inactive {
+            fill: gray;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="viz">
+        <svg></svg>
+    </div>
+    <div id="controls"></div>
+    <script>
+        var scatterData = [{ friends: 5, salary: 22000 }, { friends: 3, salary: 18000 }, { friends: 10, salary: 88000 }, { friends: 0, salary: 180000 }, { friends: 27, salary: 56000 }, { friends: 8, salary: 74000 }]
+
+        xExtent = d3.extent(scatterData, d => d.salary);
+        yExtent = d3.extent(scatterData, d => d.friends);
+        xScale = d3.scaleLinear().domain(xExtent).range([0, 500]);
+        yScale = d3.scaleLinear().domain(yExtent).range([0, 500]);
+
+        d3.select("svg")
+            .selectAll("circle")
+            .data(scatterData)
+            .enter()
+            .append("circle")
+            .attr("r", 5)
+            .attr("cx", d => xScale(d.salary))
+            .attr("cy", d => yScale(d.friends))
+
+        yAxis = d3.axisRight(yScale);
+        xAxis = d3.axisBottom(xScale);
+        d3.select("svg").append("g").attr("id", "yAxisG").call(yAxis);
+        d3.select("svg").append("g").attr("id", "xAxisG").call(xAxis);
+
+
+    </script>
+</body>
+
+</html>
