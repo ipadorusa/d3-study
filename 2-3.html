@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+    
+    <div>            
+        <svg></svg>
+    </div>
+    <script>
+    //    var testArray = [88, 1000, 1, 75, 12, 35];
+    //    console.log(d3.min(testArray, el => el));
+    //    console.log(d3.max(testArray, el => el));
+    //    console.log(d3.mean(testArray, el => el));
+        d3.csv("cities.csv", function(data) {
+            d3.min(data, el => +el.population);
+            d3.max(data, el => +el.population);
+            d3.mean(data, el => +el.population);
+            d3.extent(data, el => +el.population);
+        });
+    </script>
+</body>
+</html>

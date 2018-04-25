@@ -12,6 +12,8 @@ apt install tomcat8
 service apache2 start/stop/restart
 
 docker exec -it ubuntu1 bash
+docker ps -a
+docker start ubuntu1
 
 /var/www/html(apache2)
 /var/lib/tomcat8/webapps/ROOT
