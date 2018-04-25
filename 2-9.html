@@ -35,16 +35,16 @@
                 .attr('height', d => yScale(d.numTweets))
                 .attr('x', (d, i) => i * 60)
                 .attr('y', d => 100 - yScale(d.numTweets))
-                .style({
-                    'fill' : 'blue',
-                    'stroke' : 'red',
-                    'stroke-width' : '1px',
-                    'opacity' : '.25'
-                });
-                // .style('fill', 'blue')
-                // .style('stroke', 'red')
-                // .style('stroke-width', '1px')
-                // .style('opacity', '.25');
+                // .style({
+                //     'fill' : 'blue',
+                //     'stroke' : 'red',
+                //     'stroke-width' : '1px',
+                //     'opacity' : '.25'
+                // })
+                .style('fill', 'blue')
+                .style('stroke', 'red')
+                .style('stroke-width', '1px')
+                .style('opacity', '.25');
         }
     </script>
 </body>
